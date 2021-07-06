@@ -1,0 +1,40 @@
+--library hxnodejs
+--library ideckia_api
+--library tink_json
+--library tink_http
+
+--dce full
+-D js-es=6
+-D no-deprecation-warnings
+
+--resource icons/wi/1.png@wi1
+--resource icons/wi/1n.png@wi1n
+--resource icons/wi/2.png@wi2
+--resource icons/wi/2n.png@wi2n
+--resource icons/wi/4.png@wi4
+--resource icons/wi/4n.png@wi4n
+--resource icons/wi/6.png@wi6
+--resource icons/wi/6n.png@wi6n
+--resource icons/wi/7.png@wi7
+--resource icons/wi/9.png@wi9
+--resource icons/wi/9n.png@wi9n
+--resource icons/wi/11.png@wi11
+--resource icons/wi/18.png@wi18
+--resource icons/wi/19.png@wi19
+--resource icons/wi/21.png@wi21
+--resource icons/wi/22.png@wi22
+--resource icons/wi/24.png@wi24
+--resource icons/wi/25.png@wi25
+--resource icons/wi/28.png@wi28
+--resource icons/wi/29.png@wi29
+--resource icons/wi/30.png@wi30
+--resource icons/wi/33.png@wi33
+--resource icons/wi/33n.png@wi33n
+--resource icons/wi/51.png@wi51
+--resource icons/wi/51n.png@wi51n
+--resource icons/wi/54.png@wi54
+--resource icons/wi/nd.png@wind
+
+Wheather
+
+--js index.js
