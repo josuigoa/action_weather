@@ -31,7 +31,7 @@ class Wheather extends IdeckiaAction {
 
 		var timer = new haxe.Timer(props.updateInterval * 60 * 1000);
 		timer.run = function() {
-			getPrediction(state, server.sendToClient, server.log);
+			getPrediction(state, server.updateClientState, server.log);
 		};
 	}
 
@@ -58,7 +58,7 @@ class Wheather extends IdeckiaAction {
 		TuTiempoApi.getPrediccion(props.tutiempoTownIds[currentTownIndex]).then(p -> {
 			var h = p.hour_hour.hour1;
 			server.log('prevision.hour1: $h');
-            var time = DateTools.format(Date.now(), '%H:%M');
+			var time = DateTools.format(Date.now(), '%H:%M');
 			currentState.text = '${p.locality.name}\n$time ${h.temperature}ºC';
 			currentState.icon = Base64.encode(haxe.Resource.getBytes('wi${h.icon}'));
 			resolve(currentState);
