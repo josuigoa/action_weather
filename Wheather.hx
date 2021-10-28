@@ -14,17 +14,13 @@ typedef Props = {
 	var updateInterval:UInt;
 }
 
+@:name('weather')
 class Wheather extends IdeckiaAction {
 	var state:ItemState;
 	var currentTownIndex:UInt;
 
-	override public function init(initialState:ItemState) {
+	override public function init(initialState:ItemState):js.lib.Promise<ItemState> {
 		state = initialState;
-
-		if (props.tutiempoTownIds.length == 0) {
-			currentTownIndex = -1;
-			return;
-		}
 
 		currentTownIndex = 0;
 		TuTiempoApi.apiKey = props.tutiempoKey;
@@ -33,11 +29,13 @@ class Wheather extends IdeckiaAction {
 		timer.run = function() {
 			getPrediction(state, server.updateClientState, server.log);
 		};
+
+		return execute(state);
 	}
 
 	public function execute(currentState:ItemState):js.lib.Promise<ItemState> {
 		return new js.lib.Promise((resolve, reject) -> {
-			if (currentTownIndex == -1)
+			if (props.tutiempoTownIds.length == 0 || currentTownIndex == -1)
 				reject('Town id not found');
 
 			getPrediction(currentState, resolve, reject);
